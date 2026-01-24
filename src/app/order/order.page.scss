@@ -1,0 +1,190 @@
+/* ===== ORDER SUMMARY CARD ===== */
+
+.bg-card {
+  background: #ffffff;
+}
+
+.rounded-2xl {
+  border-radius: 16px;
+}
+
+.p-6 {
+  padding: 16px;
+}
+
+.shadow-card {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.border {
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== HEADER ===== */
+
+.text-lg {
+  font-size: 1.1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+/* ===== ITEM LIST ===== */
+
+.space-y-3 > * + * {
+  margin-top: 12px;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-3 {
+  gap: 12px;
+}
+
+.py-2 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Quantity badge */
+.w-8 {
+  width: 32px;
+  height: 32px;
+}
+
+.h-8 {
+  height: 32px;
+}
+
+.bg-secondary {
+  background: #eef2ff;
+}
+
+.rounded-lg {
+  border-radius: 10px;
+}
+
+.text-sm {
+  font-size: 0.85rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+/* Item label */
+.font-medium {
+  font-weight: 500;
+}
+
+/* Price */
+span.font-semibold {
+  font-size: 0.95rem;
+}
+
+/* Divider lines */
+.border-b {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.last\:border-0:last-child {
+  border-bottom: none;
+}
+
+/* ===== TOTALS ===== */
+
+.space-y-2 > * + * {
+  margin-top: 8px;
+}
+
+.pt-4 {
+  padding-top: 16px;
+}
+
+.border-t {
+  border-top: 1px solid #e5e7eb;
+}
+
+.text-muted-foreground {
+  color: #6b7280;
+}
+
+.text-xl {
+  font-size: 1.35rem;
+}
+
+.text-primary {
+  color: var(--ion-color-primary);
+}
+
+/* Total row emphasis */
+.border-t.border-border {
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+.flex {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.qty-btn {
+  --padding-start: 6px;
+  --padding-end: 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
+
+.checkout-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 12px 16px;
+  z-index: 100;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-total {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
+
+/* Prevent content hiding behind footer */
+ion-content::part(scroll) {
+  padding-bottom: 120px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

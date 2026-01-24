@@ -1,0 +1,47 @@
+<ion-content class="auth-page">
+
+  <div class="auth-container">
+
+    <!-- BRAND / IMAGE -->
+    <div class="auth-header">
+      <img src="assets/images/logo.png" alt="Gas24" />
+      <h2>Create Account</h2>
+      <p>Fast gas delivery starts here</p>
+    </div>
+
+    <!-- FORM -->
+    <div class="auth-card">
+
+      <ion-item>
+        <ion-label position="stacked">Full Name</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Confirm Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" size="large" class="primary-btn">
+        Create Account
+      </ion-button>
+
+      <p class="switch">
+        Already have an account?
+        <a routerLink="/login">Login</a>
+      </p>
+
+    </div>
+  </div>
+
+</ion-content>

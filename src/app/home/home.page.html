@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+
+  <div class="hero-wrapper">
+
+    <!-- Location Bar -->
+    <div class="location-bar">
+      <ion-item lines="none" class="location-item">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+
+        <ion-input placeholder="Enter delivery location" [(ngModel)]="deliveryLocation" clearInput="true"></ion-input>
+
+        <ion-button fill="clear" slot="end" (click)="useCurrentLocation()">
+          <ion-icon name="navigate-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-container">
+      <h1 class="hero-title">
+        Gas Delivery
+        <span class="hero-highlight">Made Simple</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Order your LPG gas cylinders online and get them delivered to your
+        doorstep. Fast, safe, and reliable.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Select Cylinder -->
+  <div class="section-title">
+    <h3>Select Cylinder Size</h3>
+  </div>
+
+  <!-- Horizontal Scroll Cards -->
+  <div class="cylinder-scroll">
+    <ion-card *ngFor="let c of cylinders" class="cylinder-card" [class.selected]="selectedCylinder === c.size"
+      (click)="selectCylinder(c)">
+      <ion-card-content class="ion-text-center">
+        <img [src]="c.image" class="cylinder-image" />
+
+        <h4>{{ c.label }}</h4>
+        <p class="price">R{{ c.price }}</p>
+
+        <ion-button expand="block" size="small" color="primary" (click)="addToCart(c); $event.stopPropagation()">
+          Add to Cart
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- INFO CARD (FULL WIDTH) -->
+  <div class="info-cards single">
+    <ion-card class="info-card time">
+      <div class="info-content">
+        <div>
+          <h4>Delivery Time</h4>
+          <p>30 – 60 min</p>
+        </div>
+        <ion-icon name="time-outline"></ion-icon>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

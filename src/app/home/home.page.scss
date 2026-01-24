@@ -1,0 +1,254 @@
+ion-content {
+  --background: #ffffff6f;
+}
+
+.hero-container {
+  text-align: center;
+  // padding: 3rem 1.25rem 2rem;
+}
+
+.hero-wrapper {
+
+  background: linear-gradient(298deg, #ff8c0059, #ff7a00);
+  // margin: 0.75rem 1rem 1.25rem;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.hero-highlight {
+  display: block;
+  color: #ff6000
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #1f1f1f;
+  max-width: 420px;
+  margin: 0 auto 2rem;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.1s;
+}
+// .hero-subtitle {
+//   font-size: 1.05rem;
+//   color: #fff;
+//   max-width: 420px;
+//   margin: 0 auto 1rem;
+// }
+
+.hero-actions {
+  display: grid;
+  gap: 1rem;
+  max-width: 320px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.location-bar {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.location-item {
+  --background: var(--ion-color-light);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+ion-icon {
+  color: var(--ion-color-primary);
+}
+
+.order-header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    color: var(--ion-color-medium);
+    font-size: 0.95rem;
+  }
+}
+
+.cylinder-card {
+  text-align: center;
+  border-radius: 16px;
+}
+
+.cylinder-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--ion-color-medium);
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.quantity {
+  font-size: 1.3rem;
+  font-weight: 700;
+  width: 32px;
+  text-align: center;
+}
+
+.cylinder-image {
+  max-width: 120px;
+  margin: 16px auto;
+  display: block;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+/* Simple animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section title */
+.section-title {
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+}
+
+/* Horizontal scroll */
+.cylinder-scroll {
+  display: flex;
+  // gap: 1rem;
+  // padding: 0 1rem 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.cylinder-card {
+  min-width: 220px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 2px solid #f2f2f2;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover (desktop) */
+.cylinder-card:hover {
+  border-color: #ff8c00;
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Pressed (mobile) */
+.cylinder-card:active {
+  border-color: #ff8c00;
+  box-shadow: 0 6px 16px rgba(255, 140, 0, 0.2);
+  transform: scale(0.98);
+}
+
+/* Keyboard / accessibility */
+.cylinder-card:focus-within {
+  border-color: #ff8c00;
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
+}
+
+
+/* Info cards */
+.info-cards {
+  // display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0 1rem 2rem;
+}
+
+.info-card {
+  border-radius: 16px;
+  padding: 0.25rem 1rem;
+  margin: 3px;
+}
+
+.info-cards.single {
+  padding: 0 1rem 1.5rem;
+}
+
+.info-cards.single .info-card {
+  width: 100%;
+}
+
+.info-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: var(--ion-color-medium);
+  }
+
+  ion-icon {
+    font-size: 1.8rem;
+  }
+}
+
+/* Color accents */
+.info-card.time ion-icon {
+  color: #38bdf8; // baby blue
+}
+
+.info-card.orders ion-icon {
+  color: #22c55e; // green
+}

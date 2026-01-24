@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Order Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+  <!-- DELIVERY DETAILS -->
+  <div class="bg-card rounded-2xl p-6 shadow-card border border-border/50" *ngIf="cart.length">
+
+    <!-- ORDER SUMMARY -->
+    <div class="bg-card rounded-2xl p-6 shadow-card border border-border/50">
+
+      <h3 class="text-lg font-bold text-foreground flex items-center gap-2 mb-4">
+        Order Summary
+      </h3>
+
+      <!-- ITEMS -->
+      <div class="flex justify-between items-center py-2 border-b border-border/50 last:border-0"
+        *ngFor="let item of cart">
+
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-sm font-semibold">
+            {{ item.quantity }}
+          </span>
+
+          <span class="font-medium">
+            {{ item.size }} Cylinder
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <ion-button fill="clear" size="small" class="qty-btn" (click)="decrease(item)">
+            −
+          </ion-button>
+
+          <span class="font-semibold price">
+            R{{ item.price * item.quantity }}
+          </span>
+
+          <ion-button fill="clear" size="small" class="qty-btn" (click)="increase(item)">
+            +
+          </ion-button>
+        </div>
+
+      </div>
+
+      <!-- TOTALS -->
+      <div class="space-y-2 pt-4 border-t border-border">
+        <div class="flex justify-between text-muted-foreground">
+          <span>Subtotal</span>
+          <span>R{{ subtotal }}</span>
+        </div>
+
+        <div class="flex justify-between text-muted-foreground">
+          <span>Delivery Fee</span>
+          <span>R{{ deliveryFee }}</span>
+        </div>
+
+        <div class="flex justify-between text-xl font-bold pt-2 border-t border-border">
+          <span>Total</span>
+          <span class="text-primary">R{{ subtotal + deliveryFee }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ion-button fill="clear" size="small" color="danger" (click)="clearCart()">
+      Clear Cart
+    </ion-button>
+
+    <h3 class="text-lg font-bold mb-4">Delivery Details</h3>
+
+    <form class="space-y-5">
+
+      <ion-item>
+        <ion-label position="stacked">Full Name</ion-label>
+        <ion-input placeholder="John Doe"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Phone Number</ion-label>
+        <ion-input placeholder="+27 12 345 6789"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Delivery Address</ion-label>
+        <ion-textarea rows="3" placeholder="123 Main Street, City"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Delivery Notes (Optional)</ion-label>
+        <ion-textarea rows="2" placeholder="Any special instructions..."></ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" size="large" disabled>
+        Place Order
+      </ion-button>
+
+    </form>
+
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div *ngIf="!cart.length" class="ion-text-center ion-padding">
+    <ion-icon name="cart-outline" size="large"></ion-icon>
+    <p>Your cart is empty</p>
+  </div>
+
+</ion-content>
