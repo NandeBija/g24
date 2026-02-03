@@ -14,6 +14,7 @@ export class RegisterPage {
   fullName = '';
   email = '';
   password = '';
+  phone = '';
   confirmPassword = '';
   loading = false;
 
@@ -49,7 +50,9 @@ export class RegisterPage {
       await supabase.from('users').insert({
         user_id: data.user?.id,
         email: this.email,
-        user_type: 'user',
+        user_type: 'Customer',
+        full_name: this.fullName,
+        phone: this.phone,
       });
 
       // Navigate to login or dashboard
