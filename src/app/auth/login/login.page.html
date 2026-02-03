@@ -1,37 +1,49 @@
-<ion-content class="auth-page">
+<ion-content fullscreen class="auth-page">
 
-  <div class="auth-container">
+  <!-- Logo / Welcome -->
+  <div class="auth-header">
+    <img src="assets/img/login-illustration.png" alt="Welcome" class="auth-image" />
 
-    <!-- BRAND / IMAGE -->
-    <div class="auth-header">
-      <img src="assets/images/login-hero.png" alt="Gas24 Login" />
-      <h2>Welcome Back</h2>
-      <p>Log in to continue your order</p>
-    </div>
-
-    <!-- FORM -->
-    <div class="auth-card">
-
-      <ion-item>
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input type="email" placeholder="you@email.com"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-
-      <ion-button expand="block" size="large" class="primary-btn" (click)="login()">
-        Login
-      </ion-button>
-
-      <p class="switch">
-        Don’t have an account?
-        <a routerLink="/register">Create one</a>
-      </p>
-
-    </div>
+    <h1>Welcome Back</h1>
+    <p>Log in to continue ordering gas</p>
   </div>
+
+  <!-- Login Card -->
+  <ion-card class="auth-card">
+    <ion-card-content>
+
+      <form (ngSubmit)="login()">
+
+        <!-- Email -->
+        <ion-item lines="none" class="auth-item">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input type="email" placeholder="Email address" [(ngModel)]="email" name="email" required>
+          </ion-input>
+        </ion-item>
+
+        <!-- Password -->
+        <ion-item lines="none" class="auth-item">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+          </ion-input>
+        </ion-item>
+
+        <!-- Login Button -->
+        <ion-button expand="block" size="large" type="submit" class="auth-btn" [disabled]="loading">
+          {{ loading ? 'Logging in...' : 'Login' }}
+        </ion-button>
+
+      </form>
+
+      <!-- Footer -->
+      <div class="auth-footer">
+        <p>
+          Don’t have an account?
+          <a routerLink="/register">Create one</a>
+        </p>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

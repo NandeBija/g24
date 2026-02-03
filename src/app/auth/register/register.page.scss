@@ -78,6 +78,13 @@ ion-input {
   text-decoration: none;
 }
 
+.error-text {
+  color: #e63946;
+  font-size: 0.85rem;
+  margin-left: 16px;
+  margin-top: 4px;
+}
+
 /* Animations */
 @keyframes fadeUp {
   from {
