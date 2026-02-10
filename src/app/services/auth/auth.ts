@@ -27,27 +27,27 @@ export class AuthService {
   }
 
   /* ---------------- REGISTER ---------------- */
-  async register(email: string, password: string, profile: any) {
-    const { data, error } = await this.supabase.auth.signUp({
-      email,
-      password,
-    });
+  // async register(email: string, password: string, profile: any) {
+  //   const { data, error } = await this.supabase.auth.signUp({
+  //     email,
+  //     password,
+  //   });
 
-    if (error) throw error;
+  //   if (error) throw error;
 
-    // Create profile in users table
-    const { error: profileError } = await this.supabase.from('users').insert({
-      user_id: data.user?.id,
-      email,
-      user_type: profile.user_type ?? 'Customer',
-      full_name: profile.full_name,
-      phone: profile.phone,
-    });
+  //   // Create profile in users table
+  //   const { error: profileError } = await this.supabase.from('users').insert({
+  //     user_id: data.user?.id,
+  //     email,
+  //     user_type: profile.user_type ?? 'Customer',
+  //     full_name: profile.full_name,
+  //     phone: profile.phone,
+  //   });
 
-    if (profileError) throw profileError;
+  //   if (profileError) throw profileError;
 
-    return data.user;
-  }
+  //   return data.user;
+  // }
 
   /* ---------------- PROFILE ---------------- */
   async getProfile() {

@@ -13,17 +13,17 @@
     <div class="auth-card">
 
       <ion-item>
-        <ion-label position="stacked">Full Name</ion-label>
-        <ion-input [(ngModel)]="fullName" required></ion-input>
+        <ion-label position="stacked"></ion-label>
+        <ion-input [(ngModel)]="fullName" placeholder="Full Name" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input type="email" [(ngModel)]="email" required></ion-input>
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="email" [(ngModel)]="email" placeholder="Email" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">Phone</ion-label>
-        <ion-input type="number" [(ngModel)]="phone" required></ion-input>
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="tel" [(ngModel)]="phone" maxlength="10" required placeholder="Cellphone number"></ion-input>
       </ion-item>
 
       <ion-item>

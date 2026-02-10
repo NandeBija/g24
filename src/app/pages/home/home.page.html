@@ -7,7 +7,8 @@
       <ion-item lines="none" class="location-item">
         <ion-icon name="location-outline" slot="start"></ion-icon>
 
-        <ion-input placeholder="Enter delivery location" [(ngModel)]="deliveryLocation" clearInput="true"></ion-input>
+        <ion-input placeholder="Enter delivery location" [(ngModel)]="deliveryLocation" clearInput="true">
+        </ion-input>
 
         <ion-button fill="clear" slot="end" (click)="useCurrentLocation()">
           <ion-icon name="navigate-outline"></ion-icon>

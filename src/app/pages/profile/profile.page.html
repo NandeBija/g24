@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile-content">
+
+  <ng-container *ngIf="!loading; else loadingState">
+
+    <!-- PROFILE CARD -->
+    <div class="profile-card">
+      <div class="avatar">
+        {{ user?.user_metadata?.full_name?.charAt(0) || 'U' }}
+      </div>
+
+      <h2>{{ user?.user_metadata?.full_name }}</h2>
+      <p class="email">{{ user?.email }}</p>
+
+      <div class="meta">
+        <div>
+          <span>Phone</span>
+          <p>{{ user?.user_metadata?.phone || '—' }}</p>
+        </div>
+        <div>
+          <span>Account</span>
+          <p>{{ user?.user_metadata?.user_type }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDER HISTORY -->
+    <div class="section">
+      <h3>Order History</h3>
+
+      <ion-card *ngFor="let order of orders" class="order-card">
+        <ion-card-content>
+          <div class="order-row">
+            <strong>#{{ order.order_number }}</strong>
+            <span class="status" [class.completed]="order.status === 'Completed'">
+              {{ order.status }}
+            </span>
+          </div>
+
+          <div class="order-row">
+            <span>{{ formatDate(order.created_at) }}</span>
+            <strong>R {{ order.total_amount }}</strong>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <p *ngIf="orders.length === 0" class="empty">
+        No orders yet.
+      </p>
+    </div>
+
+  </ng-container>
+
+  <ng-template #loadingState>
+    <ion-spinner class="spinner"></ion-spinner>
+  </ng-template>
+
+</ion-content>

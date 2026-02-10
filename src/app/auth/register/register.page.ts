@@ -20,6 +20,7 @@ export class RegisterPage {
 
   errorMessage: string = '';
   passwordMismatch: boolean = false;
+  currentDate: Date = new Date();
 
   constructor(
     private router: Router,
@@ -27,38 +28,76 @@ export class RegisterPage {
     private alertCtrl: AlertController
   ) {}
 
+  isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   async register() {
     this.errorMessage = '';
     this.passwordMismatch = false;
+
+    if (!this.isValidEmail(this.email)) {
+      this.showErrorPopup('Please enter a valid email address.');
+      return;
+    }
 
     if (this.password !== this.confirmPassword) {
       this.passwordMismatch = true;
       return;
     }
 
+    this.loading = true;
+
     try {
       const { data, error } = await supabase.auth.signUp({
         email: this.email,
         password: this.password,
+        options: {
+          data: {
+            full_name: this.fullName,
+            phone: this.phone,
+            user_type: 'Customer',
+          },
+          emailRedirectTo: 'http://localhost:8100/login',
+        },
       });
 
-      if (error) {
-        throw error;
+      if (error) throw error;
+
+      // Insert profile ONLY if user object exists
+      if (data.user) {
+        // console.log(data.user)
+        // await supabase.from('users').insert({
+        //   user_id: data.user?.id,
+        //   email: this.email,
+        //   user_type: 'Customer',
+        //   full_name: this.fullName,
+        //   phone: this.phone,
+        //   created_at: new Date(),
+        // });
       }
 
-      // Optional: insert into users table
-      await supabase.from('users').insert({
-        user_id: data.user?.id,
-        email: this.email,
-        user_type: 'Customer',
-        full_name: this.fullName,
-        phone: this.phone,
-      });
+      await this.showSuccessPopup();
 
-      // Navigate to login or dashboard
+      // Redirect to login (NOT home)
+      this.router.navigateByUrl('/login', { replaceUrl: true });
     } catch (err: any) {
       this.showErrorPopup(err.message);
+    } finally {
+      this.loading = false;
     }
+  }
+
+  async showSuccessPopup() {
+    const alert = await this.alertCtrl.create({
+      header: 'Almost there ✉️',
+      message:
+        'We’ve sent you a confirmation email. Please verify your email address before logging in.',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 
   async showErrorPopup(message: string) {
@@ -76,8 +115,16 @@ export class RegisterPage {
       return 'An account with this email already exists.';
     }
 
-    if (message.includes('Invalid login credentials')) {
-      return 'Incorrect email or password.';
+    if (message.includes('invalid email')) {
+      return 'Please enter a valid email address.';
+    }
+
+    if (message.includes('Password should be')) {
+      return 'Password must be at least 6 characters.';
+    }
+
+    if (message.includes('Email rate limit exceeded')) {
+      return 'Too many attempts. Please try again later.';
     }
 
     return message || 'Something went wrong. Please try again.';
