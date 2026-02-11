@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { supabase } from 'src/app/services/superbase/superbase';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { ModalController } from '@ionic/angular';
+import { EditProfilePage } from '../edit-profile/edit-profile.page';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +15,7 @@ export class ProfilePage implements OnInit {
   user: any = null;
   orders: any[] = [];
   loading = true;
-
+  constructor(private modalCtrl: ModalController) {}
   async ngOnInit() {
     await this.loadProfile();
     await this.loadOrders();
@@ -53,6 +55,23 @@ export class ProfilePage implements OnInit {
 
   formatDate(date: string) {
     return new Date(date).toLocaleDateString();
+  }
+
+  async openEditModal() {
+    const modal = await this.modalCtrl.create({
+      component: EditProfilePage,
+      componentProps: {
+        user: this.user,
+      },
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+
+    if (data?.updated) {
+      await this.loadProfile(); // Refresh profile
+    }
   }
 
   async logout() {

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="edit-content">
+  <div class="form-card">
+
+    <ion-item>
+      <ion-label position="stacked">Full Name</ion-label>
+      <ion-input [(ngModel)]="fullName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-input [(ngModel)]="phone"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="save-btn" [disabled]="loading" (click)="save()">
+      {{ loading ? 'Saving...' : 'Save Changes' }}
+    </ion-button>
+
+  </div>
+</ion-content>

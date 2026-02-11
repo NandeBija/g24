@@ -1,1 +1,17 @@
 
+ion-tab-button {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 6px;
+  right: 48px;
+  font-size: 0.7rem;
+  min-width: 18px;
+  height: 19px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface CartItem {
   size: string;
@@ -13,8 +14,16 @@ export interface CartItem {
 export class CartService {
   private cart: CartItem[] = [];
 
+  private cartCount = new BehaviorSubject<number>(0);
+  cartCount$ = this.cartCount.asObservable();
+
   getItems() {
     return this.cart;
+  }
+
+  private updateCartCount() {
+    const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+    this.cartCount.next(totalItems);
   }
 
   addItem(item: Omit<CartItem, 'quantity'>) {
@@ -28,6 +37,8 @@ export class CartService {
         quantity: 1,
       });
     }
+
+    this.updateCartCount();
   }
 
   removeItem(item: CartItem) {
@@ -36,6 +47,8 @@ export class CartService {
     if (item.quantity <= 0) {
       this.cart = this.cart.filter((c) => c.size !== item.size);
     }
+
+    this.updateCartCount();
   }
 
   getSubtotal(): number {
@@ -44,5 +57,6 @@ export class CartService {
 
   clearCart() {
     this.cart = [];
+    this.updateCartCount();
   }
 }
