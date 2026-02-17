@@ -42,8 +42,8 @@
 }
 
 .auth-header img {
-  width: 332px;
-  max-width: 100%;
+  width: 100%;
+  // max-width: 100%;
   height: auto;
   margin-bottom: 0.5rem;
   // filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
@@ -76,12 +76,12 @@
 ========================= */
 
 .auth-card {
-  width: 90%;
-  max-width: 420px;
+  width: 94%;
+  // max-width: 420px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(14px);
   border-radius: 1.8rem;
-  padding: 2rem 1.6rem;
+  // padding: 2rem 1.6rem;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
   animation: fadeUp 0.8s ease-out;
 }
