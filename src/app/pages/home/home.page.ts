@@ -32,21 +32,21 @@ export class homePage implements OnInit {
       label: 'Standard Cylinder',
       price: 330,
       quantity: 0,
-      image: 'assets/cylinders/9kg.jpg',
+      image: 'assets/cylinders/9kg.png',
     },
     {
       size: '19kg',
       label: 'Large Cylinder',
       price: 680,
       quantity: 0,
-      image: 'assets/cylinders/19kg.jpg',
+      image: 'assets/cylinders/19kg.png',
     },
     {
       size: '48kg',
       label: 'Industrial Cylinder',
       price: 1650,
       quantity: 0,
-      image: 'assets/cylinders/48kg.jpg',
+      image: 'assets/cylinders/48kg.png',
     },
   ];
 
